@@ -159,6 +159,12 @@
         </dirset>
     </path>
 
+    <path id="java-code-doctor-sample.module.test.sourcepath">
+        <dirset dir="${module.java-code-doctor-sample.basedir}">
+            <include name="test"/>
+        </dirset>
+    </path>
+
 
     <target name="compile.module.java-code-doctor-sample"
             depends="compile.module.java-code-doctor-sample.production,compile.module.java-code-doctor-sample.tests"
@@ -187,7 +193,25 @@
 
     <target name="compile.module.java-code-doctor-sample.tests"
             depends="compile.module.java-code-doctor-sample.production"
-            description="compile module java-code-doctor-sample; test classes" unless="skip.tests"/>
+            description="compile module java-code-doctor-sample; test classes" unless="skip.tests">
+        <mkdir dir="${java-code-doctor-sample.testoutput.dir}"/>
+        <javac destdir="${java-code-doctor-sample.testoutput.dir}" debug="${compiler.debug}"
+               nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true"
+               executable="${module.jdk.bin.java-code-doctor-sample}/javac">
+            <compilerarg line="${compiler.args.java-code-doctor-sample}"/>
+            <bootclasspath refid="java-code-doctor-sample.module.bootclasspath"/>
+            <classpath refid="java-code-doctor-sample.module.classpath"/>
+            <src refid="java-code-doctor-sample.module.test.sourcepath"/>
+            <patternset refid="excluded.from.compilation.java-code-doctor-sample"/>
+        </javac>
+
+        <copy todir="${java-code-doctor-sample.testoutput.dir}">
+            <fileset dir="${module.java-code-doctor-sample.basedir}/test">
+                <patternset refid="compiler.resources"/>
+                <type type="file"/>
+            </fileset>
+        </copy>
+    </target>
 
     <target name="clean.module.java-code-doctor-sample" description="cleanup module">
         <delete dir="${java-code-doctor-sample.output.dir}"/>
