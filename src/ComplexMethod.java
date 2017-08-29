@@ -1,5 +1,3 @@
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
 public class ComplexMethod {
 
     public String intToEnglishValue(int i) {
@@ -22,7 +20,7 @@ public class ComplexMethod {
             return "Six";
         }
         if (i > 6) {
-            throw new NotImplementedException();
+            throw new IllegalArgumentException(String.format("Invalid input i=%d", i));
         }
         return null;
     }
