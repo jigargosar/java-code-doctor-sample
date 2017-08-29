@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="java-code-doctor-sample" default="all">
+
+
+    <property file="java-code-doctor-sample.properties"/>
+    <!-- Uncomment the following property if no tests compilation is needed -->
+    <!--
+    <property name="skip.tests" value="true"/>
+     -->
+
+    <!-- Compiler options -->
+
+    <property name="compiler.debug" value="on"/>
+    <property name="compiler.generate.no.warnings" value="off"/>
+    <property name="compiler.args" value=""/>
+    <property name="compiler.max.memory" value="700m"/>
+    <patternset id="ignored.files">
+        <exclude name="**/*.dyn_hi/**"/>
+        <exclude name="**/*.dyn_o/**"/>
+        <exclude name="**/*.hi/**"/>
+        <exclude name="**/*.hprof/**"/>
+        <exclude name="**/*.o/**"/>
+        <exclude name="**/*.pyc/**"/>
+        <exclude name="**/*.pyo/**"/>
+        <exclude name="**/*.rbc/**"/>
+        <exclude name="**/*.yarb/**"/>
+        <exclude name="**/*~/**"/>
+        <exclude name="**/.DS_Store/**"/>
+        <exclude name="**/.git/**"/>
+        <exclude name="**/.hg/**"/>
+        <exclude name="**/.svn/**"/>
+        <exclude name="**/CVS/**"/>
+        <exclude name="**/RCS/**"/>
+        <exclude name="**/SCCS/**"/>
+        <exclude name="**/__pycache__/**"/>
+        <exclude name="**/_svn/**"/>
+        <exclude name="**/rcs/**"/>
+        <exclude name="**/vssver.scc/**"/>
+        <exclude name="**/vssver2.scc/**"/>
+    </patternset>
+    <patternset id="library.patterns">
+        <include name="*.egg"/>
+        <include name="*.jar"/>
+        <include name="*.ear"/>
+        <include name="*.apk"/>
+        <include name="*.swc"/>
+        <include name="*.war"/>
+        <include name="*.ane"/>
+        <include name="*.zip"/>
+    </patternset>
+    <patternset id="compiler.resources">
+        <exclude name="**/?*.java"/>
+        <exclude name="**/?*.form"/>
+        <exclude name="**/?*.class"/>
+        <exclude name="**/?*.groovy"/>
+        <exclude name="**/?*.scala"/>
+        <exclude name="**/?*.flex"/>
+        <exclude name="**/?*.kt"/>
+        <exclude name="**/?*.clj"/>
+    </patternset>
+
+    <!-- JDK definitions -->
+
+    <property name="jdk.bin.idea_jdk" value="${jdk.home.idea_jdk}/bin"/>
+    <path id="jdk.classpath.idea_jdk">
+        <fileset dir="${jdk.home.idea_jdk}">
+            <include name="jre/lib/charsets.jar"/>
+            <include name="jre/lib/deploy.jar"/>
+            <include name="jre/lib/ext/cldrdata.jar"/>
+            <include name="jre/lib/ext/dnsns.jar"/>
+            <include name="jre/lib/ext/jaccess.jar"/>
+            <include name="jre/lib/ext/jfxrt.jar"/>
+            <include name="jre/lib/ext/localedata.jar"/>
+            <include name="jre/lib/ext/nashorn.jar"/>
+            <include name="jre/lib/ext/sunec.jar"/>
+            <include name="jre/lib/ext/sunjce_provider.jar"/>
+            <include name="jre/lib/ext/sunpkcs11.jar"/>
+            <include name="jre/lib/ext/zipfs.jar"/>
+            <include name="jre/lib/javaws.jar"/>
+            <include name="jre/lib/jce.jar"/>
+            <include name="jre/lib/jfr.jar"/>
+            <include name="jre/lib/jfxswt.jar"/>
+            <include name="jre/lib/jsse.jar"/>
+            <include name="jre/lib/management-agent.jar"/>
+            <include name="jre/lib/plugin.jar"/>
+            <include name="jre/lib/resources.jar"/>
+            <include name="jre/lib/rt.jar"/>
+            <include name="lib/ant-javafx.jar"/>
+            <include name="lib/dt.jar"/>
+            <include name="lib/javafx-mx.jar"/>
+            <include name="lib/jconsole.jar"/>
+            <include name="lib/packager.jar"/>
+            <include name="lib/sa-jdi.jar"/>
+            <include name="lib/tools.jar"/>
+        </fileset>
+    </path>
+
+    <property name="project.jdk.home" value="${jdk.home.idea_jdk}"/>
+    <property name="project.jdk.bin" value="${jdk.bin.idea_jdk}"/>
+    <property name="project.jdk.classpath" value="jdk.classpath.idea_jdk"/>
+
+
+    <!-- Global Libraries -->
+
+    <!-- Modules -->
+
+
+    <!-- Module java-code-doctor-sample -->
+
+    <dirname property="module.java-code-doctor-sample.basedir" file="${ant.file}"/>
+
+
+    <property name="module.jdk.home.java-code-doctor-sample" value="${project.jdk.home}"/>
+    <property name="module.jdk.bin.java-code-doctor-sample" value="${project.jdk.bin}"/>
+    <property name="module.jdk.classpath.java-code-doctor-sample" value="${project.jdk.classpath}"/>
+
+    <property name="compiler.args.java-code-doctor-sample"
+              value="-encoding UTF-8 -source 1.6 -target 1.6 ${compiler.args}"/>
+
+    <property name="java-code-doctor-sample.output.dir"
+              value="${module.java-code-doctor-sample.basedir}/out/production/java-code-doctor-sample"/>
+    <property name="java-code-doctor-sample.testoutput.dir"
+              value="${module.java-code-doctor-sample.basedir}/out/test/java-code-doctor-sample"/>
+
+    <path id="java-code-doctor-sample.module.bootclasspath">
+        <!-- Paths to be included in compilation bootclasspath -->
+    </path>
+
+    <path id="java-code-doctor-sample.module.production.classpath">
+        <path refid="${module.jdk.classpath.java-code-doctor-sample}"/>
+    </path>
+
+    <path id="java-code-doctor-sample.runtime.production.module.classpath">
+        <pathelement location="${java-code-doctor-sample.output.dir}"/>
+    </path>
+
+    <path id="java-code-doctor-sample.module.classpath">
+        <path refid="${module.jdk.classpath.java-code-doctor-sample}"/>
+        <pathelement location="${java-code-doctor-sample.output.dir}"/>
+    </path>
+
+    <path id="java-code-doctor-sample.runtime.module.classpath">
+        <pathelement location="${java-code-doctor-sample.testoutput.dir}"/>
+        <pathelement location="${java-code-doctor-sample.output.dir}"/>
+    </path>
+
+
+    <patternset id="excluded.from.module.java-code-doctor-sample">
+        <patternset refid="ignored.files"/>
+    </patternset>
+
+    <patternset id="excluded.from.compilation.java-code-doctor-sample">
+        <patternset refid="excluded.from.module.java-code-doctor-sample"/>
+    </patternset>
+
+    <path id="java-code-doctor-sample.module.sourcepath">
+        <dirset dir="${module.java-code-doctor-sample.basedir}">
+            <include name="src"/>
+        </dirset>
+    </path>
+
+
+    <target name="compile.module.java-code-doctor-sample"
+            depends="compile.module.java-code-doctor-sample.production,compile.module.java-code-doctor-sample.tests"
+            description="Compile module java-code-doctor-sample"/>
+
+    <target name="compile.module.java-code-doctor-sample.production"
+            description="Compile module java-code-doctor-sample; production classes">
+        <mkdir dir="${java-code-doctor-sample.output.dir}"/>
+        <javac destdir="${java-code-doctor-sample.output.dir}" debug="${compiler.debug}"
+               nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true"
+               executable="${module.jdk.bin.java-code-doctor-sample}/javac">
+            <compilerarg line="${compiler.args.java-code-doctor-sample}"/>
+            <bootclasspath refid="java-code-doctor-sample.module.bootclasspath"/>
+            <classpath refid="java-code-doctor-sample.module.production.classpath"/>
+            <src refid="java-code-doctor-sample.module.sourcepath"/>
+            <patternset refid="excluded.from.compilation.java-code-doctor-sample"/>
+        </javac>
+
+        <copy todir="${java-code-doctor-sample.output.dir}">
+            <fileset dir="${module.java-code-doctor-sample.basedir}/src">
+                <patternset refid="compiler.resources"/>
+                <type type="file"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="compile.module.java-code-doctor-sample.tests"
+            depends="compile.module.java-code-doctor-sample.production"
+            description="compile module java-code-doctor-sample; test classes" unless="skip.tests"/>
+
+    <target name="clean.module.java-code-doctor-sample" description="cleanup module">
+        <delete dir="${java-code-doctor-sample.output.dir}"/>
+        <delete dir="${java-code-doctor-sample.testoutput.dir}"/>
+    </target>
+
+    <target name="init" description="Build initialization">
+        <!-- Perform any build initialization in this target -->
+    </target>
+
+    <target name="clean" depends="clean.module.java-code-doctor-sample" description="cleanup all"/>
+
+    <target name="build.modules" depends="init, clean, compile.module.java-code-doctor-sample"
+            description="build all modules"/>
+
+    <target name="all" depends="build.modules" description="build all"/>
+</project>
