@@ -61,9 +61,9 @@
 
     <!-- JDK definitions -->
 
-    <property name="jdk.bin.idea_jdk" value="${jdk.home.idea_jdk}/bin"/>
-    <path id="jdk.classpath.idea_jdk">
-        <fileset dir="${jdk.home.idea_jdk}">
+    <property name="jdk.bin.1.8" value="${jdk.home.1.8}/bin"/>
+    <path id="jdk.classpath.1.8">
+        <fileset dir="${jdk.home.1.8}">
             <include name="jre/lib/charsets.jar"/>
             <include name="jre/lib/deploy.jar"/>
             <include name="jre/lib/ext/cldrdata.jar"/>
@@ -95,9 +95,9 @@
         </fileset>
     </path>
 
-    <property name="project.jdk.home" value="${jdk.home.idea_jdk}"/>
-    <property name="project.jdk.bin" value="${jdk.bin.idea_jdk}"/>
-    <property name="project.jdk.classpath" value="jdk.classpath.idea_jdk"/>
+    <property name="project.jdk.home" value="${jdk.home.1.8}"/>
+    <property name="project.jdk.bin" value="${jdk.bin.1.8}"/>
+    <property name="project.jdk.classpath" value="jdk.classpath.1.8"/>
 
 
     <!-- Global Libraries -->
@@ -115,7 +115,7 @@
     <property name="module.jdk.classpath.java-code-doctor-sample" value="${project.jdk.classpath}"/>
 
     <property name="compiler.args.java-code-doctor-sample"
-              value="-encoding UTF-8 -source 1.6 -target 1.6 ${compiler.args}"/>
+              value="-encoding UTF-8 -source 1.8 -target 1.8 ${compiler.args}"/>
 
     <property name="java-code-doctor-sample.output.dir"
               value="${module.java-code-doctor-sample.basedir}/out/production/java-code-doctor-sample"/>
