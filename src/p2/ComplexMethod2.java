@@ -129,7 +129,7 @@ public class ComplexMethod2 {
         if (i == 6) {
             return "Six";
         }
-        if (i > 20) {
+        if (i > 21) {
             throw new IllegalArgumentException(String.format("Invalid input i=%d", i));
         }
         return null;
