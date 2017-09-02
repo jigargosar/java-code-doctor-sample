@@ -21,7 +21,7 @@ public class ComplexMethod {
             return "Six";
         }
         if (i > 6) {
-            throw new IllegalArgumentException(String.format("Invalid input i=%d", i));
+            throw new IllegalArgumentException(String.format("asdf input i=%d", i));
         }
         return null;
     }

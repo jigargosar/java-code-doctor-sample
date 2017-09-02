@@ -1,4 +1,6 @@
-public class ComplexMethod2 {
+package p2;
+
+public class ComplexMethod5 {
 
     public String iasdntToEnglishValue(int i) {
         /*dfg dfgdsf gdsfg dsfg sdf gdsgds*/
@@ -21,7 +23,7 @@ public class ComplexMethod2 {
             return "Six";
         }
         if (i > 6) {
-            throw new IllegalArgumentException(String.format("sdf input i=%d", i));
+            throw new IllegalArgumentException(String.format("Invalid input i=%d", i));
         }
         return null;
     }
