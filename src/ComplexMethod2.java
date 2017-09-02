@@ -18,7 +18,7 @@ public class ComplexMethod2 {
             return "Five";
         }
         if (i == 6) {
-            return "Six";
+            return "sdf";
         }
         if (i > 6) {
             throw new IllegalArgumentException(String.format("sdf input i=%d", i));
@@ -39,7 +39,7 @@ public class ComplexMethod2 {
             return "Three";
         }
         if (i == 4) {
-            return "Four";
+            return "sdf";
         }
         if (i == 5) {
             return "Five";
