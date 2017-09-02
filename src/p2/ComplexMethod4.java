@@ -11,7 +11,7 @@ public class ComplexMethod4 {
             return "Two";
         }
         if (i == 3) {
-            return "Three";
+            return "sdf";
         }
         if (i == 4) {
             return "Four";
@@ -38,7 +38,7 @@ public class ComplexMethod4 {
             return "Two";
         }
         if (i == 3) {
-            return "Three";
+            return "sdf";
         }
         if (i == 4) {
             return "Four";

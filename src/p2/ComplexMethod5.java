@@ -20,7 +20,7 @@ public class ComplexMethod5 {
             return "Five";
         }
         if (i == 6) {
-            return "Six";
+            return "asdf";
         }
         if (i > 6) {
             throw new IllegalArgumentException(String.format("Invalid input i=%d", i));

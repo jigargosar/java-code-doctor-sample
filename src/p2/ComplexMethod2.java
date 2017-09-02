@@ -121,7 +121,7 @@ public class ComplexMethod2 {
             return "Three";
         }
         if (i == 4) {
-            return "Four";
+            return "sdf";
         }
         if (i == 5) {
             return "Five";
@@ -139,7 +139,7 @@ public class ComplexMethod2 {
     public String intToEnglishValueasdasda(int i) {
         /*dfg dfgdsf gdsfg dsfg sdf gdsgds*/
         if (i == 1) {
-            return "One";
+            return "sdf";
         }
         if (i == 2) {
             return "Two";
