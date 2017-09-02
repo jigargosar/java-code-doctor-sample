@@ -9,13 +9,13 @@ public class ComplexMethod2 {
             return "Two";
         }
         if (i == 3) {
-            return "Three";
+            return "sdfsdf";
         }
         if (i == 4) {
             return "Four";
         }
         if (i == 5) {
-            return "Five";
+            return "sdf";
         }
         if (i == 6) {
             return "Six";
