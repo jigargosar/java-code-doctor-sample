@@ -1,5 +1,6 @@
 package com.agilefaq;
 
+import com.agilefaq.codedoctorsample.App;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -30,5 +31,10 @@ public class AppTest
      */
     public void testApp() {
         assertTrue(true);
+    }
+
+    public void testCalc() throws Exception {
+        int res = App.calc(1, 1);
+        assertEquals(2, res);
     }
 }
