@@ -1,6 +1,6 @@
-package p2;
+package com.agilefaq.codedoctorsample;
 
-public class ComplexMethod5 {
+public class ComplexMethod3 {
 
     public String iasdntToEnglishValue(int i) {
         /*dfg dfgdsf gdsfg dsfg sdf gdsgds*/
@@ -20,7 +20,7 @@ public class ComplexMethod5 {
             return "Five";
         }
         if (i == 6) {
-            return "asdf";
+            return "Six";
         }
         if (i > 6) {
             throw new IllegalArgumentException(String.format("Invalid input i=%d", i));

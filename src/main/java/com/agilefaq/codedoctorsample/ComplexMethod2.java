@@ -1,4 +1,4 @@
-package p2;
+package com.agilefaq.codedoctorsample;
 
 public class ComplexMethod2 {
 
@@ -11,19 +11,19 @@ public class ComplexMethod2 {
             return "Two";
         }
         if (i == 3) {
-            return "Three";
+            return "sdfsdf";
         }
         if (i == 4) {
             return "Four";
         }
         if (i == 5) {
-            return "Five";
+            return "sdf";
         }
         if (i == 6) {
             return "Six";
         }
         if (i > 6) {
-            throw new IllegalArgumentException(String.format("Invalid input i=%d", i));
+            throw new IllegalArgumentException(String.format("sdf input i=%d", i));
         }
         return null;
     }
@@ -55,6 +55,110 @@ public class ComplexMethod2 {
         return null;
     }
 
+
+    public String intToEnsdfglishValueasdasdaaa(int i) {
+        /*dfg dfgdsf gdsfg dsfg sdf gdsgds*/
+        if (i == 1) {
+            return "One";
+        }
+        if (i == 2) {
+            return "Two";
+        }
+        if (i == 3) {
+            return "Three";
+        }
+        if (i == 4) {
+            return "Four";
+        }
+        if (i == 5) {
+            return "Five";
+        }
+        if (i == 6) {
+            return "Six";
+        }
+        if (i > 6) {
+            throw new IllegalArgumentException(String.format("Invalid input i=%d", i));
+        }
+        return null;
+    }
+
+    public String sdfintToEnsdfglishValueasdasda(int i) {
+        /*dfg dfgdsf gdsfg dsfg sdf gdsgds*/
+        if (i == 1) {
+            return "One";
+        }
+        if (i == 2) {
+            return "Two";
+        }
+        if (i == 3) {
+            return "sf";
+        }
+        if (i == 4) {
+            return "Four";
+        }
+        if (i == 5) {
+            return "Five";
+        }
+        if (i == 6) {
+            return "Six";
+        }
+        if (i > 6) {
+            throw new IllegalArgumentException(String.format("Invalid input i=%d", i));
+        }
+        return null;
+    }
+
+    public String intToEnsdfglishValueasdasdsda(int i) {
+        /*dfg dfgdsf gdsfg dsfg sdf gdsgds*/
+        if (i == 1) {
+            return "One";
+        }
+        if (i == 2) {
+            return "Two";
+        }
+        if (i == 3) {
+            return "Three";
+        }
+        if (i == 4) {
+            return "Four";
+        }
+        if (i == 5) {
+            return "Five";
+        }
+        if (i == 6) {
+            return "Six";
+        }
+        if (i > 6) {
+            throw new IllegalArgumentException(String.format("Invalid input i=%d", i));
+        }
+        return null;
+    }
+
+    public String intToEnsdfglishValueasdasdaaasdasd(int i) {
+        /*dfg dfgdsf gdsfg dsfg sdf gdsgds*/
+        if (i == 1) {
+            return "One";
+        }
+        if (i == 2) {
+            return "Two";
+        }
+        if (i == 3) {
+            return "Three";
+        }
+        if (i == 4) {
+            return "Four";
+        }
+        if (i == 5) {
+            return "Five";
+        }
+        if (i == 6) {
+            return "Six";
+        }
+        if (i > 6) {
+            throw new IllegalArgumentException(String.format("Invalid input i=%d", i));
+        }
+        return null;
+    }
 
     public String intTsfdoEnglishValue(int i) {
         /*dfg dfgdsf gdsfg dsfg sdf gdsgds*/
@@ -121,7 +225,7 @@ public class ComplexMethod2 {
             return "Three";
         }
         if (i == 4) {
-            return "sdf";
+            return "Four";
         }
         if (i == 5) {
             return "Five";
@@ -129,7 +233,7 @@ public class ComplexMethod2 {
         if (i == 6) {
             return "Six";
         }
-        if (i > 23) {
+        if (i > 6) {
             throw new IllegalArgumentException(String.format("Invalid input i=%d", i));
         }
         return null;
@@ -139,7 +243,7 @@ public class ComplexMethod2 {
     public String intToEnglishValueasdasda(int i) {
         /*dfg dfgdsf gdsfg dsfg sdf gdsgds*/
         if (i == 1) {
-            return "sdf";
+            return "One";
         }
         if (i == 2) {
             return "Two";

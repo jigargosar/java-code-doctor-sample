@@ -1,4 +1,6 @@
-public class ComplexMethod3 {
+package com.agilefaq.codedoctorsample.p2;
+
+public class ComplexMethod2 {
 
     public String iasdntToEnglishValue(int i) {
         /*dfg dfgdsf gdsfg dsfg sdf gdsgds*/
@@ -119,7 +121,7 @@ public class ComplexMethod3 {
             return "Three";
         }
         if (i == 4) {
-            return "Four";
+            return "sdf";
         }
         if (i == 5) {
             return "Five";
@@ -127,7 +129,7 @@ public class ComplexMethod3 {
         if (i == 6) {
             return "Six";
         }
-        if (i > 6) {
+        if (i > 23) {
             throw new IllegalArgumentException(String.format("Invalid input i=%d", i));
         }
         return null;
@@ -137,7 +139,7 @@ public class ComplexMethod3 {
     public String intToEnglishValueasdasda(int i) {
         /*dfg dfgdsf gdsfg dsfg sdf gdsgds*/
         if (i == 1) {
-            return "One";
+            return "sdf";
         }
         if (i == 2) {
             return "Two";
