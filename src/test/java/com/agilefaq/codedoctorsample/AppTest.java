@@ -11,4 +11,10 @@ public class AppTest {
         int res = App.calc(1, 1);
         assertEquals(2, res);
     }
+
+    @Test
+    public void testCalc2() throws Exception {
+        int res = App.calc2(1, 1);
+        assertEquals(0, res);
+    }
 }
