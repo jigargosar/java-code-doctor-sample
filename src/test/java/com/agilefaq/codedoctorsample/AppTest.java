@@ -1,6 +1,5 @@
-package com.agilefaq;
+package com.agilefaq.codedoctorsample;
 
-import com.agilefaq.codedoctorsample.App;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
