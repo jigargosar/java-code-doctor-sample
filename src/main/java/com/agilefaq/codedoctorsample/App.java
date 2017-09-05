@@ -13,6 +13,18 @@ public class App {
     }
 
     public static int multiply(int a1, int a2) {
-        return a1 / a2;
+        return a1 * a2;
+    }
+
+    public static int multiply2(int a1, int a2) {
+        return a1 * a2;
+    }
+
+    public static int multiply3(int a1, int a2) {
+        return a1 * a2;
+    }
+
+    public static int multiply4(int a1, int a2) {
+        return a1 * a2;
     }
 }
