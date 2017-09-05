@@ -12,7 +12,7 @@ public class App {
         return a1 - a2;
     }
 
-    public static int calc3(int a1, int a2) {
+    public static int divide(int a1, int a2) {
         return a1 * a2;
     }
 }
