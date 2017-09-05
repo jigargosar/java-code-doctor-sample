@@ -20,7 +20,7 @@ public class AppTest {
 
     @Test
     public void testCalc3() throws Exception {
-        int res = App.calc3(5, 10);
+        int res = App.multiply(5, 10);
         assertEquals(50, res);
     }
 
