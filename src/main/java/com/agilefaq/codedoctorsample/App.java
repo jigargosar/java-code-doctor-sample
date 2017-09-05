@@ -25,6 +25,27 @@ public class App {
     }
 
     public static int multiply4(int a1, int a2) {
+        if (a1 == 1) {
+            a1 = 2;
+        }
+        if (a1 == 1) {
+            a1 = 2;
+        }
+        if (a1 == 1) {
+            a1 = 2;
+        }
+        if (a1 == 1) {
+            a1 = 2;
+        }
+        if (a1 == 1) {
+            a1 = 2;
+        }
+        if (a1 == 1) {
+            a1 = 2;
+        }
+        if (a1 == 1) {
+            a1 = 2;
+        }
         return a1 * a2;
     }
 }
