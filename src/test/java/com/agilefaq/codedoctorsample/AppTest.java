@@ -14,13 +14,13 @@ public class AppTest {
 
     @Test
     public void testCalc2() throws Exception {
-        int res = App.calc(1, 1);
-        assertEquals(2, res);
+        int res = App.calc2(1, 1);
+        assertEquals(0, res);
     }
 
     @Test
     public void testCalc3() throws Exception {
-        int res = App.calc3(5, 10);
+        int res = App.multiply(5, 10);
         assertEquals(50, res);
     }
 
