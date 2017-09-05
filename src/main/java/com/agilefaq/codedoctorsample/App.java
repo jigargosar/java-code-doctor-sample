@@ -34,16 +34,7 @@ public class App {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        String uname = "steve";
-        String password = "blue";
-        try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost/test?" +
-                    "user=" + uname + "&password=" + password);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        java.net.PasswordAuthentication pa = new java.net.PasswordAuthentication("userName", "1234".toCharArray());  
+        java.net.PasswordAuthentication pa = new java.net.PasswordAuthentication("userName", "1234".toCharArray());
 
 
         String a = null;
