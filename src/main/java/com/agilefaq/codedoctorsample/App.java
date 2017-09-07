@@ -8,6 +8,7 @@ import java.sql.SQLException;
  * Hello world!
  */
 public class App {
+    public int one = 1;
     public static int calc(int a1, int a2) {
         return a1 + a2;
     }
@@ -42,6 +43,8 @@ public class App {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        
+        //adding some comments
 
         java.net.PasswordAuthentication pa = new java.net.PasswordAuthentication("userName", "1234".toCharArray());  
 
@@ -84,7 +87,7 @@ public class App {
         if (a1 == 1) {
             a1 = 2;
         }
-        return a1 * a2;
+        return a1 * a2 + 1;
     }
 }
 
