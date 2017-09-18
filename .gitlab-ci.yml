@@ -1,9 +1,9 @@
 image:
   maven:latest
 
-cache:
-  paths:
-    - .m2/repository/
+#cache:
+#  paths:
+#    - .m2/repository/
 
 stages:
   - build
