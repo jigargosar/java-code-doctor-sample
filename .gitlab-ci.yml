@@ -7,21 +7,31 @@ image:
 
 stages:
   - build
-  - analyze
+  - analysis
 
 maven:
   stage: build
   artifacts:
     untracked: true
   script:
-    - ls -l
-    - mvn clean test
-    - ls -l
+  - ls -l
+  - mvn clean test
+  - ls -l
 
 check-ws:
-  stage: analyze
+  stage: analysis
   script:
-    - ls -l
+  - ls -l
+
+sonarqube:
+  stage: analysis
+  image: ciricihq/gitlab-sonar-scanner
+  variables:
+    SONAR_URL: "http://sonarqube:9000"
+    SONAR_PROJECT_VERSION: "$CI_JOB_ID"
+    SONAR_ANALYSIS_MODE: "issues"
+  script:
+  - /usr/bin/sonar-scanner-run.sh
 
 
 
