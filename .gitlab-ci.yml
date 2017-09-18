@@ -21,6 +21,8 @@ check-ws:
   stage: build
   script:
     - ls -l
+  dependencies:
+    - maven
 
 
 
