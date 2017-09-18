@@ -7,7 +7,7 @@ stages:
 maven:
   stage: build
   script:
-    - echo "maven"
+    - mvn clean test
 
 
 
