@@ -10,6 +10,8 @@ stages:
 
 maven:
   stage: build
+  artifacts:
+    untracked: true
   script:
     - ls -l
     - mvn clean test
