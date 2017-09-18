@@ -81,9 +81,6 @@ public class App {
         if (a1 == 1) {
             a1 = 2;
         }
-        if (a1 == 1) {
-            a1 = 2;
-        }
         return a1 * a2;
     }
 }
