@@ -22,6 +22,37 @@ public class App {
         if (point1 == point) {
             System.out.println("Equal");
         }
+
+        if (a1 == 1) {
+            a1 = 2;
+        }
+        if (a1 == 1) {
+            a1 = 2;
+        }
+        if (a1 == 1) {
+            a1 = 2;
+        }
+        if (a1 == 1) {
+            a1 = 2;
+        }
+        if (a1 == 1) {
+            a1 = 2;
+        }
+        if (a1 == 1) {
+            a1 = 2;
+        }
+        if (a1 == 1) {
+            a1 = 2;
+        }
+        return a1 * a2;
+    }
+
+    public static int multiply99(int a1, int a2) {
+        Point point = new Point();
+        Point point1 = new Point();
+        if (point1 == point) {
+            System.out.println("Equal");
+        }
         return a1 * a2;
     }
 
@@ -34,16 +65,7 @@ public class App {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        String uname = "steve";
-        String password = "blue";
-        try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost/test?" +
-                    "user=" + uname + "&password=" + password);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        java.net.PasswordAuthentication pa = new java.net.PasswordAuthentication("userName", "1234".toCharArray());  
+        java.net.PasswordAuthentication pa = new java.net.PasswordAuthentication("userName", "1234".toCharArray());
 
 
         String a = null;
