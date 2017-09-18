@@ -8,6 +8,7 @@ maven:
   stage: build
   script:
     - mvn clean test
+    - mvn clean test
 
 
 
