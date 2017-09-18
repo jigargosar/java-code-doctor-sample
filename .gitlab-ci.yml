@@ -7,6 +7,7 @@ image:
 
 stages:
   - build
+  - analyze
 
 maven:
   stage: build
@@ -18,11 +19,9 @@ maven:
     - ls -l
 
 check-ws:
-  stage: build
+  stage: analyze
   script:
     - ls -l
-  dependencies:
-    - maven
 
 
 
