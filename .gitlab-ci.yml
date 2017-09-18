@@ -1,6 +1,10 @@
 image:
   maven:latest
 
+cache:
+  paths:
+    - /root/.m2/repository/
+
 stages:
   - build
 
