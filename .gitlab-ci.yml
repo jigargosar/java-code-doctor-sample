@@ -1,25 +1,36 @@
+image:maven:latest
 stages:
-- analysis
+  build
 
-sonarqube:
-  stage: analysis
-  image: ciricihq/gitlab-sonar-scanner
-  variables:
-    SONAR_URL: "http://localhost:9000"
-    SONAR_PROJECT_VERSION: "$CI_BUILD_ID"
-    SONAR_ANALYSIS_MODE: "issues"
+maven:
+  stage: build
   script:
-  - /usr/bin/sonar-scanner-run.sh
+    - echo "maven"
 
-sonarqube-reports:
-  stage: analysis
-  image: ciricihq/gitlab-sonar-scanner
-  variables:
-    SONAR_URL: "http://localhost:9000"
-    SONAR_PROJECT_VERSION: "$CI_BUILD_ID"
-    SONAR_ANALYSIS_MODE: "publish"
-  script:
-  - unset CI_BUILD_REF && /usr/bin/sonar-scanner-run.sh
+
+
+#stages:
+#- analysis
+#
+#sonarqube:
+#  stage: analysis
+#  image: ciricihq/gitlab-sonar-scanner
+#  variables:
+#    SONAR_URL: "http://localhost:9000"
+#    SONAR_PROJECT_VERSION: "$CI_BUILD_ID"
+#    SONAR_ANALYSIS_MODE: "issues"
+#  script:
+#  - /usr/bin/sonar-scanner-run.sh
+#
+#sonarqube-reports:
+#  stage: analysis
+#  image: ciricihq/gitlab-sonar-scanner
+#  variables:
+#    SONAR_URL: "http://localhost:9000"
+#    SONAR_PROJECT_VERSION: "$CI_BUILD_ID"
+#    SONAR_ANALYSIS_MODE: "publish"
+#  script:
+#  - unset CI_BUILD_REF && /usr/bin/sonar-scanner-run.sh
 
 
 # trigger build2
