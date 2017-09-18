@@ -11,8 +11,14 @@ stages:
 maven:
   stage: build
   script:
+    - ls -l
     - mvn clean test
-    - mvn clean test
+    - ls -l
+
+check-ws:
+  stage: build
+  script:
+    - ls -l
 
 
 
