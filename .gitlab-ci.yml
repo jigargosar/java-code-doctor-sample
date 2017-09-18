@@ -3,7 +3,7 @@ image:
 
 cache:
   paths:
-    - /root/.m2/repository/
+    - .m2/repository/
 
 stages:
   - build
