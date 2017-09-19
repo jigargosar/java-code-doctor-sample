@@ -11,8 +11,8 @@ stages:
   - analysis
 
 maven:
-  variables:
-      CI_DEBUG_TRACE: "true"
+#  variables:
+#      CI_DEBUG_TRACE: "true"
   stage: build
   artifacts:
     untracked: true
