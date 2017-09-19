@@ -20,6 +20,7 @@ maven:
   - mvn --batch-mode clean test
 
 
+#https://github.com/gabrie-allaigre/sonar-gitlab-plugin
 sonarqube-preview:
   variables:
     CI_DEBUG_TRACE: "true"
