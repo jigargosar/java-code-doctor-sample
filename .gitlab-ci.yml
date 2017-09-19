@@ -57,6 +57,7 @@ maven:
 sonarqube:
   variables:
       CI_DEBUG_TRACE: "true"
+      SONAR_URL: "http://sonarqube:9000"
   sonarqube:
     script:
       - mvn --batch-mode verify sonar:sonar -Dsonar.host.url=$SONAR_URL -Dsonar.gitlab.project_id=$CI_PROJECT_PATH
