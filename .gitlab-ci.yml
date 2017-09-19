@@ -29,7 +29,7 @@ sonarqube-preview:
     - git config user.email $GITLAB_USER_EMAIL
     - git config user.name $GITLAB_USER_EMAIL
     - git merge $CI_BUILD_REF --no-commit --no-ff
-    - mvn --batch-mode verify sonar:sonar -Dsonar.host.url=$SONAR_URL -Dsonar.analysis.mode=preview -Dsonar.gitlab.project_id=$CI_PROJECT_PATH -Dsonar.gitlab.commit_sha=$CI_COMMIT_SHA -Dsonar.gitlab.ref_name=$CI_COMMIT_REF_NAME -Dsonar.gitlab.all_issues=false
+    - mvn --batch-mode verify sonar:sonar -Dsonar.host.url=$SONAR_URL -Dsonar.analysis.mode=preview -Dsonar.gitlab.project_id=$CI_PROJECT_PATH -Dsonar.gitlab.commit_sha=$CI_COMMIT_SHA -Dsonar.gitlab.ref_name=$CI_COMMIT_REF_NAME -Dsonar.gitlab.all_issues=false -Dsonar.gitlab.only_issue_from_commit_line=true
   stage: test
 
 
