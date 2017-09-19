@@ -45,24 +45,23 @@ sonarqube-reports-master:
 
 
 
-
-sonarqube-reports-merge-request:
-  variables:
-      CI_DEBUG_TRACE: "true"
-      SONAR_URL: "http://sonarqube:9000"
-      SONAR_PROJECT_NAME: java-code-doctor-sample--$CI_COMMIT_REF_NAME
-  script:
-    - git checkout origin/master
-    - git config user.email $GITLAB_USER_EMAIL
-    - git config user.name $GITLAB_USER_EMAIL
-    - git merge $CI_BUILD_REF --no-commit --no-ff
-    - mvn --batch-mode verify sonar:sonar -Dsonar.host.url=$SONAR_URL -Dsonar.analysis.mode=publish -Dsonar.projectKey=$SONAR_PROJECT_NAME -Dsonar.projectName=$SONAR_PROJECT_NAME
-  stage: test
-  except:
-    - develop
-    - master
-    - /^hotfix_.*$/
-    - /.*-hotfix$/
+#sonarqube-reports-merge-request:
+#  variables:
+#      CI_DEBUG_TRACE: "true"
+#      SONAR_URL: "http://sonarqube:9000"
+#      SONAR_PROJECT_NAME: java-code-doctor-sample--$CI_COMMIT_REF_NAME
+#  script:
+#    - git checkout origin/master
+#    - git config user.email $GITLAB_USER_EMAIL
+#    - git config user.name $GITLAB_USER_EMAIL
+#    - git merge $CI_BUILD_REF --no-commit --no-ff
+#    - mvn --batch-mode verify sonar:sonar -Dsonar.host.url=$SONAR_URL -Dsonar.analysis.mode=publish -Dsonar.projectKey=$SONAR_PROJECT_NAME -Dsonar.projectName=$SONAR_PROJECT_NAME
+#  stage: test
+#  except:
+#    - develop
+#    - master
+#    - /^hotfix_.*$/
+#    - /.*-hotfix$/
 
 
 
