@@ -20,18 +20,6 @@ maven:
   - mvn --batch-mode clean test
 
 
-
-sonarqube:
-  variables:
-      CI_DEBUG_TRACE: "true"
-      SONAR_URL: "http://sonarqube:9000"
-  script:
-    - mvn --batch-mode verify sonar:sonar -Dsonar.host.url=$SONAR_URL -Dsonar.gitlab.project_id=$CI_PROJECT_PATH
-  stage: test
-  only:
-    - master
-
-
 sonarqube-preview:
   variables:
     CI_DEBUG_TRACE: "true"
@@ -44,7 +32,20 @@ sonarqube-preview:
     - mvn --batch-mode verify sonar:sonar -Dsonar.host.url=$SONAR_URL -Dsonar.analysis.mode=preview -Dsonar.gitlab.project_id=$CI_PROJECT_PATH -Dsonar.gitlab.commit_sha=$CI_COMMIT_SHA -Dsonar.gitlab.ref_name=$CI_COMMIT_REF_NAME -Dsonar.gitlab.all_issues=false
   stage: test
 
-sonarqube-preview-risk-report:
+
+sonarqube-reports-master:
+  variables:
+      CI_DEBUG_TRACE: "true"
+      SONAR_URL: "http://sonarqube:9000"
+  script:
+    - mvn --batch-mode verify sonar:sonar -Dsonar.host.url=$SONAR_URL -Dsonar.gitlab.project_id=$CI_PROJECT_PATH
+  stage: test
+  only:
+    - master
+
+
+
+sonarqube-reports-branches:
   variables:
       CI_DEBUG_TRACE: "true"
       SONAR_URL: "http://sonarqube:9000"
