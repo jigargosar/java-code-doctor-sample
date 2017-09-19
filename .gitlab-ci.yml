@@ -21,6 +21,7 @@ maven:
   - mvn --batch-mode clean test
   - ls -l
 
+
 #check-ws:
 #  stage: analysis
 #  script:
@@ -60,28 +61,30 @@ sonarqube-preview:
     - git config user.email $GITLAB_USER_EMAIL
     - git config user.name $GITLAB_USER_EMAIL
     - git merge $CI_BUILD_REF --no-commit --no-ff
-    - mvn --batch-mode verify sonar:sonar -Dsonar.host.url=$SONAR_URL -Dsonar.analysis.mode=preview -Dsonar.gitlab.project_id=$CI_PROJECT_PATH -Dsonar.gitlab.commit_sha=$CI_BUILD_REF -Dsonar.gitlab.ref_name=$CI_COMMIT_REF_NAME-Dsonar.gitlab.all_issues=true
+    - mvn --batch-mode verify sonar:sonar -Dsonar.host.url=$SONAR_URL -Dsonar.analysis.mode=preview -Dsonar.gitlab.project_id=$CI_PROJECT_PATH -Dsonar.gitlab.commit_sha=$CI_COMMIT_SHA -Dsonar.gitlab.ref_name=$CI_COMMIT_REF_NAME-Dsonar.gitlab.all_issues=false
   stage: test
-  except:
-    - develop
-    - master
-    - /^hotfix_.*$/
-    - /.*-hotfix$/
+
+#  except:
+#    - develop
+#    - master
+#    - /^hotfix_.*$/
+#    - /.*-hotfix$/
+
 
 #  tags:
 #    - java
 
-sonarqube-reports:
+sonarqube-risk-report:
   variables:
       CI_DEBUG_TRACE: "true"
       SONAR_URL: "http://sonarqube:9000"
+      SONAR_PROJECT_NAME: java-code-doctor-sample-$CI_COMMIT_REF_NAME
   script:
     - git checkout origin/master
     - git config user.email $GITLAB_USER_EMAIL
     - git config user.name $GITLAB_USER_EMAIL
-    - mvn --batch-mode verify sonar:sonar -Dsonar.host.url=$SONAR_URL -Dsonar.projectKey=com.agilefaq:java-code-doctor-sample-$CI_COMMIT_REF_NAME
     - git merge $CI_BUILD_REF --no-commit --no-ff
-    - mvn --batch-mode verify sonar:sonar -Dsonar.host.url=$SONAR_URL -Dsonar.projectKey=com.agilefaq:java-code-doctor-sample-$CI_COMMIT_REF_NAME
+    - mvn --batch-mode verify sonar:sonar -Dsonar.host.url=$SONAR_URL -Dsonar.analysis.mode=publish -Dsonar.projectKey=$SONAR_PROJECT_NAME -Dsonar.projectName=$SONAR_PROJECT_NAME
   stage: test
   except:
     - develop
