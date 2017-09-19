@@ -1,5 +1,5 @@
 image:
-  maven:latest
+  mvn_npm:latest
 
 #cache:
 #  paths:
@@ -58,10 +58,9 @@ sonarqube-preview:
   script:
     - git checkout origin/master
     - git config user.email $GITLAB_USER_EMAIL
-    - echo $GITLAB_USER_NAME
     - git config user.name $GITLAB_USER_EMAIL
     - git merge $CI_BUILD_REF --no-commit --no-ff
-    - mvn --batch-mode verify sonar:sonar -Dsonar.host.url=$SONAR_URL -Dsonar.analysis.mode=preview -Dsonar.gitlab.project_id=$CI_PROJECT_PATH -Dsonar.gitlab.commit_sha=$CI_BUILD_REF -Dsonar.gitlab.ref_name=$CI_BUILD_REF_NAME -Dsonar.gitlab.all_issues=true
+    - mvn --batch-mode verify sonar:sonar -Dsonar.host.url=$SONAR_URL -Dsonar.analysis.mode=preview -Dsonar.gitlab.project_id=$CI_PROJECT_PATH -Dsonar.gitlab.commit_sha=$CI_BUILD_REF -Dsonar.gitlab.ref_name=$CI_COMMIT_REF_NAME-Dsonar.gitlab.all_issues=true
   stage: test
   except:
     - develop
@@ -77,7 +76,12 @@ sonarqube-reports:
       CI_DEBUG_TRACE: "true"
       SONAR_URL: "http://sonarqube:9000"
   script:
-    - mvn --batch-mode verify sonar:sonar -Dsonar.host.url=$SONAR_URL
+    - git checkout origin/master
+    - git config user.email $GITLAB_USER_EMAIL
+    - git config user.name $GITLAB_USER_EMAIL
+    - mvn --batch-mode verify sonar:sonar -Dsonar.host.url=$SONAR_URL -Dsonar.projectKey=com.agilefaq:java-code-doctor-sample-$CI_COMMIT_REF_NAME
+    - git merge $CI_BUILD_REF --no-commit --no-ff
+    - mvn --batch-mode verify sonar:sonar -Dsonar.host.url=$SONAR_URL -Dsonar.projectKey=com.agilefaq:java-code-doctor-sample-$CI_COMMIT_REF_NAME
   stage: test
   except:
     - develop
