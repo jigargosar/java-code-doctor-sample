@@ -18,10 +18,10 @@ maven:
   - mvn clean test
   - ls -l
 
-check-ws:
-  stage: analysis
-  script:
-  - ls -l
+#check-ws:
+#  stage: analysis
+#  script:
+#  - ls -l
 
 sonarqube:
   stage: analysis
