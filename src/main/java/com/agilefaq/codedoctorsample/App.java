@@ -107,7 +107,7 @@ public class App {
         return a1 * a2;
     }
 
-    public static int multiply5(int a1, int a2) {
+    public static int multiply6(int a1, int a2) {
 
         Connection conn = null;
         try {
