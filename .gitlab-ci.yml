@@ -77,8 +77,9 @@ sonarqube:
   script:
     - mvn --batch-mode verify sonar:sonar -Dsonar.host.url=$SONAR_URL
   stage: test
-  only:
-    - master
+#  only:
+#    - master
+
 #  tags:
 #    - java
 
