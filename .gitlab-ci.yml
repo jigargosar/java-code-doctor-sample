@@ -59,7 +59,7 @@ sonarqube-reports-merge-request:
     - git config user.name $GITLAB_USER_EMAIL
     - git merge $CI_BUILD_REF --no-commit --no-ff
     - mvn --batch-mode verify sonar:sonar -Dsonar.host.url=$SONAR_URL -Dsonar.analysis.mode=publish -Dsonar.projectKey=$SONAR_PROJECT_NAME -Dsonar.projectName=$SONAR_PROJECT_NAME
-  stage: test
+  stage: analysis
   except:
     - develop
     - master
