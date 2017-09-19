@@ -55,7 +55,6 @@ sonarqube_preview:
   variables:
     CI_DEBUG_TRACE: "true"
     SONAR_URL: "http://sonarqube:9000"
-
   script:
     - git checkout origin/master
     - git config user.email $GITLAB_USER_EMAIL
@@ -69,17 +68,19 @@ sonarqube_preview:
     - master
     - /^hotfix_.*$/
     - /.*-hotfix$/
+
 #  tags:
 #    - java
 
-sonarqube:
+sonarqube-reports:
   variables:
       CI_DEBUG_TRACE: "true"
       SONAR_URL: "http://sonarqube:9000"
-
   script:
     - mvn --batch-mode verify sonar:sonar -Dsonar.host.url=$SONAR_URL
   stage: test
+
+
 #  only:
 #    - master
 
