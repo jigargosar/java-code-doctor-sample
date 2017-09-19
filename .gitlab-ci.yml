@@ -10,6 +10,8 @@ stages:
   - analysis
 
 maven:
+  variables:
+      CI_DEBUG_TRACE: "true"
   stage: build
   artifacts:
     untracked: true
@@ -24,6 +26,8 @@ maven:
 #  - ls -l
 
 sonarqube:
+  variables:
+      CI_DEBUG_TRACE: "true"
   stage: analysis
   image: ciricihq/gitlab-sonar-scanner
   variables:
@@ -32,6 +36,18 @@ sonarqube:
     SONAR_ANALYSIS_MODE: "issues"
   script:
   - /usr/bin/sonar-scanner-run.sh
+
+sonarqube-reports:
+  variables:
+      CI_DEBUG_TRACE: "true"
+  stage: analysis
+  image: ciricihq/gitlab-sonar-scanner
+  variables:
+    SONAR_URL: "http://localhost:9000"
+    SONAR_PROJECT_VERSION: "$CI_JOB_ID"
+    SONAR_ANALYSIS_MODE: "publish"
+  script:
+  - unset CI_BUILD_REF && /usr/bin/sonar-scanner-run.sh
 
 
 
