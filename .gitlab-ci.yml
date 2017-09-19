@@ -17,9 +17,7 @@ maven:
   artifacts:
     untracked: true
   script:
-  - ls -l
   - mvn --batch-mode clean test
-  - ls -l
 
 
 #check-ws:
