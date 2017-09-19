@@ -7,6 +7,7 @@ image:
 
 stages:
   - build
+  - test
   - analysis
 
 maven:
@@ -17,7 +18,7 @@ maven:
     untracked: true
   script:
   - ls -l
-  - mvn clean test
+  - mvn --batch-mode clean build
   - ls -l
 
 #check-ws:
@@ -25,30 +26,53 @@ maven:
 #  script:
 #  - ls -l
 
+#sonarqube:
+#  variables:
+#      CI_DEBUG_TRACE: "true"
+#  stage: analysis
+#  image: ciricihq/gitlab-sonar-scanner
+#  variables:
+#    SONAR_URL: "http://sonarqube:9000"
+#    SONAR_PROJECT_VERSION: "$CI_JOB_ID"
+#    SONAR_ANALYSIS_MODE: "issues"
+#  script:
+#  - /usr/bin/sonar-scanner-run.sh
+#
+#sonarqube-reports:
+#  variables:
+#      CI_DEBUG_TRACE: "true"
+#  stage: analysis
+#  image: ciricihq/gitlab-sonar-scanner
+#  variables:
+#    SONAR_URL: "http://sonarqube:9000"
+#    SONAR_PROJECT_VERSION: "$CI_JOB_ID"
+#    SONAR_ANALYSIS_MODE: "publish"
+#  script:
+#  - unset CI_BUILD_REF && /usr/bin/sonar-scanner-run.sh
+
+
+sonarqube_preview:
+  script:
+    - git checkout origin/master
+    - git merge $CI_BUILD_REF --no-commit --no-ff
+    - mvn --batch-mode verify sonar:sonar -Dsonar.host.url=$SONAR_URL -Dsonar.analysis.mode=preview -Dsonar.gitlab.project_id=$CI_PROJECT_PATH -Dsonar.gitlab.commit_sha=$CI_BUILD_REF -Dsonar.gitlab.ref_name=$CI_BUILD_REF_NAME
+  stage: test
+  except:
+    - develop
+    - master
+    - /^hotfix_.*$/
+    - /.*-hotfix$/
+  tags:
+    - java
+
 sonarqube:
-  variables:
-      CI_DEBUG_TRACE: "true"
-  stage: analysis
-  image: ciricihq/gitlab-sonar-scanner
-  variables:
-    SONAR_URL: "http://sonarqube:9000"
-    SONAR_PROJECT_VERSION: "$CI_JOB_ID"
-    SONAR_ANALYSIS_MODE: "issues"
   script:
-  - /usr/bin/sonar-scanner-run.sh
-
-sonarqube-reports:
-  variables:
-      CI_DEBUG_TRACE: "true"
-  stage: analysis
-  image: ciricihq/gitlab-sonar-scanner
-  variables:
-    SONAR_URL: "http://sonarqube:9000"
-    SONAR_PROJECT_VERSION: "$CI_JOB_ID"
-    SONAR_ANALYSIS_MODE: "publish"
-  script:
-  - unset CI_BUILD_REF && /usr/bin/sonar-scanner-run.sh
-
+    - mvn --batch-mode verify sonar:sonar -Dsonar.host.url=$SONAR_URL
+  stage: test
+  only:
+    - master
+  tags:
+    - java
 
 
 #stages:
