@@ -51,7 +51,7 @@ maven:
 #  - unset CI_BUILD_REF && /usr/bin/sonar-scanner-run.sh
 
 
-sonarqube_preview:
+sonarqube-preview:
   variables:
     CI_DEBUG_TRACE: "true"
     SONAR_URL: "http://sonarqube:9000"
