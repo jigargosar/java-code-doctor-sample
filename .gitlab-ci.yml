@@ -45,7 +45,7 @@ sonarqube-reports-master:
 
 
 
-sonarqube-reports-branches:
+sonarqube-reports-merge-branch:
   variables:
       CI_DEBUG_TRACE: "true"
       SONAR_URL: "http://sonarqube:9000"
