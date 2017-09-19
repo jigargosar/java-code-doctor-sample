@@ -45,6 +45,7 @@ sonarqube-reports-master:
 
 
 
+
 #sonarqube-reports-merge-request:
 #  variables:
 #      CI_DEBUG_TRACE: "true"
