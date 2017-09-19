@@ -74,7 +74,7 @@ sonarqube-preview:
 #  tags:
 #    - java
 
-sonarqube-risk-report:
+sonarqube-preview-risk-report:
   variables:
       CI_DEBUG_TRACE: "true"
       SONAR_URL: "http://sonarqube:9000"
