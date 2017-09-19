@@ -43,7 +43,7 @@ sonarqube-reports:
   stage: analysis
   image: ciricihq/gitlab-sonar-scanner
   variables:
-    SONAR_URL: "http://localhost:9000"
+    SONAR_URL: "http://sonarqube:9000"
     SONAR_PROJECT_VERSION: "$CI_JOB_ID"
     SONAR_ANALYSIS_MODE: "publish"
   script:
