@@ -18,7 +18,7 @@ maven:
     untracked: true
   script:
   - ls -l
-  - mvn --batch-mode clean compile
+  - mvn --batch-mode clean test
   - ls -l
 
 #check-ws:
@@ -52,6 +52,9 @@ maven:
 
 
 sonarqube_preview:
+  variables:
+    CI_DEBUG_TRACE: "true"
+
   script:
     - git checkout origin/master
     - git config user.email $GITLAB_USER_EMAIL
@@ -68,6 +71,9 @@ sonarqube_preview:
 #    - java
 
 sonarqube:
+  variables:
+    CI_DEBUG_TRACE: "true"
+
   script:
     - mvn --batch-mode verify sonar:sonar -Dsonar.host.url=$SONAR_URL
   stage: test
