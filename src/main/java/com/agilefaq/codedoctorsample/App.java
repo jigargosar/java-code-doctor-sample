@@ -56,6 +56,7 @@ public class App {
         return a1 * a2;
     }
 
+
     public static int multiply4(int a1, int a2) {
 
         Connection conn = null;
@@ -105,6 +106,7 @@ public class App {
         }
         return a1 * a2;
     }
+
 }
 
 

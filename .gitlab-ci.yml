@@ -7,15 +7,18 @@ image:
 
 stages:
   - build
+  - test
   - analysis
 
 maven:
+  variables:
+      CI_DEBUG_TRACE: "true"
   stage: build
   artifacts:
     untracked: true
   script:
   - ls -l
-  - mvn clean test
+  - mvn --batch-mode clean test
   - ls -l
 
 #check-ws:
@@ -23,16 +26,71 @@ maven:
 #  script:
 #  - ls -l
 
-sonarqube:
-  stage: analysis
-  image: ciricihq/gitlab-sonar-scanner
-  variables:
-    SONAR_URL: "http://sonarqube:9000"
-    SONAR_PROJECT_VERSION: "$CI_JOB_ID"
-    SONAR_ANALYSIS_MODE: "issues"
-  script:
-  - /usr/bin/sonar-scanner-run.sh
+#sonarqube:
+#  variables:
+#      CI_DEBUG_TRACE: "true"
+#  stage: analysis
+#  image: ciricihq/gitlab-sonar-scanner
+#  variables:
+#    SONAR_URL: "http://sonarqube:9000"
+#    SONAR_PROJECT_VERSION: "$CI_JOB_ID"
+#    SONAR_ANALYSIS_MODE: "issues"
+#  script:
+#  - /usr/bin/sonar-scanner-run.sh
+#
+#sonarqube-reports:
+#  variables:
+#      CI_DEBUG_TRACE: "true"
+#  stage: analysis
+#  image: ciricihq/gitlab-sonar-scanner
+#  variables:
+#    SONAR_URL: "http://sonarqube:9000"
+#    SONAR_PROJECT_VERSION: "$CI_JOB_ID"
+#    SONAR_ANALYSIS_MODE: "publish"
+#  script:
+#  - unset CI_BUILD_REF && /usr/bin/sonar-scanner-run.sh
 
+
+sonarqube-preview:
+  variables:
+    CI_DEBUG_TRACE: "true"
+    SONAR_URL: "http://sonarqube:9000"
+  script:
+    - git checkout origin/master
+    - git config user.email $GITLAB_USER_EMAIL
+    - echo $GITLAB_USER_NAME
+    - git config user.name $GITLAB_USER_EMAIL
+    - git merge $CI_BUILD_REF --no-commit --no-ff
+    - mvn --batch-mode verify sonar:sonar -Dsonar.host.url=$SONAR_URL -Dsonar.analysis.mode=preview -Dsonar.gitlab.project_id=$CI_PROJECT_PATH -Dsonar.gitlab.commit_sha=$CI_BUILD_REF -Dsonar.gitlab.ref_name=$CI_BUILD_REF_NAME -Dsonar.gitlab.all_issues=true
+  stage: test
+  except:
+    - develop
+    - master
+    - /^hotfix_.*$/
+    - /.*-hotfix$/
+
+#  tags:
+#    - java
+
+sonarqube-reports:
+  variables:
+      CI_DEBUG_TRACE: "true"
+      SONAR_URL: "http://sonarqube:9000"
+  script:
+    - mvn --batch-mode verify sonar:sonar -Dsonar.host.url=$SONAR_URL
+  stage: test
+  except:
+    - develop
+    - master
+    - /^hotfix_.*$/
+    - /.*-hotfix$/
+
+
+#  only:
+#    - master
+
+#  tags:
+#    - java
 
 
 #stages:
