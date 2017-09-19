@@ -54,6 +54,7 @@ maven:
 sonarqube_preview:
   variables:
     CI_DEBUG_TRACE: "true"
+    SONAR_URL: "http://sonarqube:9000"
 
   script:
     - git checkout origin/master
