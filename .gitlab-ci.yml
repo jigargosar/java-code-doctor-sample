@@ -39,20 +39,30 @@ maven:
 #  script:
 #  - /usr/bin/sonar-scanner-run.sh
 #
-sonarqube-reports:
+#sonarqube-reports:
+#  variables:
+#      CI_DEBUG_TRACE: "true"
+#  stage: test
+#  image: ciricihq/gitlab-sonar-scanner
+#  variables:
+#    SONAR_URL: "http://sonarqube:9000"
+#    SONAR_PROJECT_VERSION: "$CI_JOB_ID"
+#    SONAR_ANALYSIS_MODE: "publish"
+#  script:
+#  - unset CI_BUILD_REF && /usr/bin/sonar-scanner-run.sh
+#  only:
+#  - master
+
+
+sonarqube:
   variables:
       CI_DEBUG_TRACE: "true"
-  stage: test
-  image: ciricihq/gitlab-sonar-scanner
-  variables:
-    SONAR_URL: "http://sonarqube:9000"
-    SONAR_PROJECT_VERSION: "$CI_JOB_ID"
-    SONAR_ANALYSIS_MODE: "publish"
-  script:
-  - unset CI_BUILD_REF && /usr/bin/sonar-scanner-run.sh
-  only:
-  - master
-
+  sonarqube:
+    script:
+      - mvn --batch-mode verify sonar:sonar -Dsonar.host.url=$SONAR_URL -Dsonar.gitlab.project_id=$CI_PROJECT_PATH
+    stage: test
+    only:
+      - master
 
 
 sonarqube-preview:
