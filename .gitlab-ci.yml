@@ -79,6 +79,11 @@ sonarqube-reports:
   script:
     - mvn --batch-mode verify sonar:sonar -Dsonar.host.url=$SONAR_URL
   stage: test
+  except:
+    - develop
+    - master
+    - /^hotfix_.*$/
+    - /.*-hotfix$/
 
 
 #  only:
