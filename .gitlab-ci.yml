@@ -7,6 +7,7 @@ image:
 
 stages:
   - build
+  - test
   - analysis
 
 maven:
@@ -19,9 +20,7 @@ maven:
   - mvn --batch-mode clean test
 
 
-#https://github.com/gabrie-allaigre/sonar-gitlab-plugin
 sonarqube-preview:
-  stage: analysis
   variables:
     CI_DEBUG_TRACE: "true"
     SONAR_URL: "http://sonarqube:9000"
@@ -30,27 +29,26 @@ sonarqube-preview:
     - git config user.email $GITLAB_USER_EMAIL
     - git config user.name $GITLAB_USER_EMAIL
     - git merge $CI_BUILD_REF --no-commit --no-ff
-    - mvn --batch-mode verify sonar:sonar -Dsonar.host.url=$SONAR_URL -Dsonar.analysis.mode=preview -Dsonar.gitlab.project_id=$CI_PROJECT_PATH -Dsonar.gitlab.commit_sha=$CI_COMMIT_SHA -Dsonar.gitlab.ref_name=$CI_COMMIT_REF_NAME -Dsonar.gitlab.all_issues=false -Dsonar.gitlab.only_issue_from_commit_line=true -Dsonar.gitlab.comment_no_issue=true
+    - mvn --batch-mode verify sonar:sonar -Dsonar.host.url=$SONAR_URL -Dsonar.analysis.mode=preview -Dsonar.gitlab.project_id=$CI_PROJECT_PATH -Dsonar.gitlab.commit_sha=$CI_COMMIT_SHA -Dsonar.gitlab.ref_name=$CI_COMMIT_REF_NAME -Dsonar.gitlab.failure_notification_mode=exit-code
+  stage: test
 
 
 sonarqube-reports-master:
-  stage: analysis
-  only:
-    - master
-
   variables:
-#      CI_DEBUG_TRACE: "true"
+      CI_DEBUG_TRACE: "true"
       SONAR_URL: "http://sonarqube:9000"
-
   script:
     - mvn --batch-mode verify sonar:sonar -Dsonar.host.url=$SONAR_URL -Dsonar.gitlab.project_id=$CI_PROJECT_PATH
+  stage: test
+  only:
+    - master
 
 
 
 
 sonarqube-reports-merge-request:
   variables:
-#      CI_DEBUG_TRACE: "true"
+      CI_DEBUG_TRACE: "true"
       SONAR_URL: "http://sonarqube:9000"
       SONAR_PROJECT_NAME: java-code-doctor-sample--$CI_COMMIT_REF_NAME
   script:
@@ -59,7 +57,7 @@ sonarqube-reports-merge-request:
     - git config user.name $GITLAB_USER_EMAIL
     - git merge $CI_BUILD_REF --no-commit --no-ff
     - mvn --batch-mode verify sonar:sonar -Dsonar.host.url=$SONAR_URL -Dsonar.analysis.mode=publish -Dsonar.projectKey=$SONAR_PROJECT_NAME -Dsonar.projectName=$SONAR_PROJECT_NAME
-  stage: analysis
+  stage: test
   except:
     - develop
     - master
