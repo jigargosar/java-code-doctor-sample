@@ -4,6 +4,7 @@ package com.agilefaq.codedoctorsample;
  * Hello world!
  */
 public class App {
+    public int i = 11;
     public static int calc(int a1, int a2) {
         return a1 + a2;
     }
