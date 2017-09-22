@@ -49,6 +49,12 @@ public class App {
         if (point1 == point) {
             System.out.println("Equal");
         }
+        if (a1 == 1) {
+            a1 = 2;
+        }
+        if (a1 == 1) {
+            a1 = 2;
+        }
         return a1 * a2;
     }
 }
